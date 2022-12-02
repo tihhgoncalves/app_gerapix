@@ -13,7 +13,8 @@ Veja o exemplo:
 ```json
 {
     "copiaecola":"00020126540014BR.GOV.BCB.PIX...",
-    "qrcode":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANQAAADUCAYAAADk3g0YA..."
+    "qrcode":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANQAAADUCAYAAADk3g0YA...",
+    "qrcode_url": "https://....."
 }
 ```
 
@@ -23,10 +24,16 @@ Esse retornará uma `string` direto com o código de "Copia e Cola", conforme o 
 00020126540014BR.GOV.BCB.PIX...
 ```
 
-**FORMATO 3 IMAGEM QRCODE**
+**FORMATO 3 IMAGEM BASE64**
 Esse retornará um texto com uma imagem com o QRCODE já gerado em base64, veja exemplo:
 ```txt
 data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANQAAADUCAYAAADk3g0YA...
+```
+
+**FORMATO 4 IMAGEM URL**
+Esse retornará um texto com uma URL para uma imagem com o QRCODE já gerado , veja exemplo:
+```txt
+http://www....
 ```
 
 

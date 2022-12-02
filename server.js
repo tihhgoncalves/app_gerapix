@@ -51,7 +51,8 @@ app.get('/', async (req, res) => {
         // json de retorno
         let json = {
             copiaecola: qrCodePix.payload(),
-            qrcode: await qrCodePix.base64()
+            qrcode: await qrCodePix.base64(),
+            qrcode_url: "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" + qrCodePix.payload()
         }
 
         if(!req.query.formato || req.query.formato == 1){
@@ -65,7 +66,11 @@ app.get('/', async (req, res) => {
         } else if(req.query.formato == 3) {
             res.setHeader("Content-Type", 'text/plain; charset=utf-8');
             res.status(200).send(json.qrcode);
+        } else if(req.query.formato == 4) {
+            res.setHeader("Content-Type", 'text/plain; charset=utf-8');
+            res.status(200).send(json.qrcode_url);
         }
+
 
     }
     catch(e){
