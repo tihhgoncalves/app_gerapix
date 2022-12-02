@@ -8,29 +8,40 @@ app.get('/', async (req, res) => {
 
     try{
 
+       if(Object.entries(req.query).length == 0){
+        res.status(400).send(JSON.stringify({ msg: 'Veja documentação para utilizar a API corretamente: https://github.com/tihhgoncalves/app_gerapix' }));
+            return;
+       }
+
         // daz verificação de todos os campos foram enviados
         if(!req.query.chave){
             res.status(400).send(JSON.stringify({ msg: 'Faltou parâmetro {chave}.' }));
+            return;
         }
 
         if(!req.query.nome){
             res.status(400).send(JSON.stringify({ msg: 'Faltou parâmetro {nome}.' }));
+            return;
         }
 
         if(!req.query.cidade){
             res.status(400).send(JSON.stringify({ msg: 'Faltou parâmetro {cidade}.' }));
+            return;
         }
 
         if(!req.query.transacaoid){
             res.status(400).send(JSON.stringify({ msg: 'Faltou parâmetro {transacaoid}.' }));
+            return;
         }
 
         if(!req.query.mensagem){
             res.status(400).send(JSON.stringify({ msg: 'Faltou parâmetro {mensagem}.' }));
+            return;
         }
 
         if(!req.query.valor){
             res.status(400).send(JSON.stringify({ msg: 'Faltou parâmetro {valor}.' }));
+            return;
         }
 
         // monta objeto final
