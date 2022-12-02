@@ -52,7 +52,7 @@ app.get('/', async (req, res) => {
         let json = {
             copiaecola: qrCodePix.payload(),
             qrcode: await qrCodePix.base64(),
-            qrcode_url: "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" + qrCodePix.payload()
+            qrcode_url: "https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=" + qrCodePix.payload()
         }
 
         if(!req.query.formato || req.query.formato == 1){
