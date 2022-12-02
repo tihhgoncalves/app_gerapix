@@ -6,7 +6,7 @@ Criei uma API para simplicifcar o processo da geração do Código do PIX e, inc
 Para tornar o processo o mais simples possível, você gera tudo direto pela URL da API. 
 Porém, pode gerar em 3 formados:
 
-Formato 1 - JSON
+**FORMATO 1 - JSON**
 Retornará um objeto JSON com 2 parâmetros, um para o código do "Copia e Cola" e o outro com uma imagem de QRCODE já gerada.
 
 Veja o exemplo:
@@ -17,14 +17,14 @@ Veja o exemplo:
 }
 ```
 
-FORMATO 2 - CÓDIGO COPIA E COLA
+**FORMATO 2 - CÓDIGO COPIA E COLA**
 Esse retornará uma `string` direto com o código de "Copia e Cola", conforme o exemplo:
 ```txt
 00020126540014BR.GOV.BCB.PIX...
 ```
 
-FORMATO 3 IMAGEM QRCODE
-Esse retornará uma imagem com o QRCODE já gerado em base64, veja exemplo:
+**FORMATO 3 IMAGEM QRCODE**
+Esse retornará um texto com uma imagem com o QRCODE já gerado em base64, veja exemplo:
 ```txt
 data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANQAAADUCAYAAADk3g0YA...
 ```
@@ -33,6 +33,7 @@ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANQAAADUCAYAAADk3g0YA...
 ## URL E PARÂMETROS
 A url base é: `https://api.gerapix.rocket.srv.br` e a lista de parâmetros que você deve passar junto a url, são:
 
+- **formato** - Especifique o formato que quer que retorne (1 - Json, 2 - código e 3 - imagem)
  - **chave** - A sua chave PIX (pode ser e-mail, telefone, etc);
  - **nome** - Nome da pessoa que irá receber o PIX (por exemplo, o seu nome);
  - **cidade** - Cidade da pessoa que receberá o PIX (por exemplo, sua cidade);

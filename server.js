@@ -8,9 +8,6 @@ app.get('/', async (req, res) => {
 
     try{
 
-        // adiciona no cabeçalho que o valor retornado será um JSON
-        res.setHeader("Content-Type", 'application/json; charset=utf-8');
-
         // daz verificação de todos os campos foram enviados
         if(!req.query.chave){
             res.status(400).send(JSON.stringify({ msg: 'Faltou parâmetro {chave}.' }));
@@ -57,7 +54,18 @@ app.get('/', async (req, res) => {
             qrcode: await qrCodePix.base64()
         }
 
-        res.status(200).send(JSON.stringify(json));
+        if(!req.query.formato || req.query.formato == 1){
+            res.setHeader("Content-Type", 'application/json; charset=utf-8');
+            res.status(200).send(JSON.stringify(json));
+        
+        } else if(req.query.formato == 2) {
+            res.setHeader("Content-Type", 'text/plain; charset=utf-8');
+            res.status(200).send(json.copiaecola);
+
+        } else if(req.query.formato == 3) {
+            res.setHeader("Content-Type", 'text/plain; charset=utf-8');
+            res.status(200).send(json.qrcode);
+        }
 
     }
     catch(e){
