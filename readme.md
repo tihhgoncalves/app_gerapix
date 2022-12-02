@@ -31,7 +31,7 @@ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANQAAADUCAYAAADk3g0YA...
 
 
 ## URL E PARÂMETROS
-A url base é: [https://api.gerapix.rocket.srv.br] e a lista de parâmetros que você deve passar junto a url, são:
+A url base é: `https://api.gerapix.rocket.srv.br` e a lista de parâmetros que você deve passar junto a url, são:
 
  - **chave** - A sua chave PIX (pode ser e-mail, telefone, etc);
  - **nome** - Nome da pessoa que irá receber o PIX (por exemplo, o seu nome);
@@ -41,7 +41,11 @@ A url base é: [https://api.gerapix.rocket.srv.br] e a lista de parâmetros que 
  - **valor** - Valor do pix (somente com ponto separando o decilam. Ex.: 99.00);
 
  **Veja um exemplo de URL para testar a API:**
- [https://api.gerapix.rocket.srv.br/?chave=tihhgoncalves@gmail.com&nome=Tihh%20Goncalves&cidade=SAO%20PAULO&transacaoid=****&mensagem=Pizza&valor=99.00]
+
+ https://api.gerapix.rocket.srv.br/?chave=tihhgoncalves@gmail.com&nome=Tihh%20Goncalves&cidade=SAO%20PAULO&transacaoid=****&mensagem=Pizza&valor=99.00
+
+_P.S.: O domínio `rocket.srv.br` é de propriedade da minha empresa, a [Rocket Produtora Digital](http://www.produtorarocket.com)._
 
 ## Autor
- - @tihhgoncalves
+ - **@tihhgoncalves**
+ - https://t.me/tihhgoncalves
