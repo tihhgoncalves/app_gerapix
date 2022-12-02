@@ -38,7 +38,7 @@ http://www....
 
 
 ## URL E PARÂMETROS
-A url base é: `https://api.gerapix.rocket.srv.br` e a lista de parâmetros que você deve passar junto a url, são:
+A url base é: `https://rocket-gerapix.vercel.app` e a lista de parâmetros que você deve passar junto a url, são:
 
 - **formato** - Especifique o formato que quer que retorne (1 - Json, 2 - código e 3 - imagem)
  - **chave** - A sua chave PIX (pode ser e-mail, telefone, etc);
@@ -50,7 +50,7 @@ A url base é: `https://api.gerapix.rocket.srv.br` e a lista de parâmetros que 
 
  **Veja um exemplo de URL para testar a API:**
 
- https://api.gerapix.rocket.srv.br/?chave=tihhgoncalves@gmail.com&nome=Tihh%20Goncalves&cidade=SAO%20PAULO&transacaoid=****&mensagem=Pizza&valor=99.00
+ [https://rocket-gerapix.vercel.app?chave=tihhgoncalves@gmail.com&nome=Tihh%20Goncalves&cidade=SAO%20PAULO&transacaoid=****&mensagem=Pizza&valor=99.00](https://rocket-gerapix.vercel.app?chave=tihhgoncalves@gmail.com&nome=Tihh%20Goncalves&cidade=SAO%20PAULO&transacaoid=****&mensagem=Pizza&valor=99.00)
 
 _P.S.: O domínio `rocket.srv.br` é de propriedade da minha empresa, a [Rocket Produtora Digital](http://www.produtorarocket.com)._
 
