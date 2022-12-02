@@ -36,7 +36,7 @@ app.get('/', async (req, res) => {
         // monta objeto final
         let pix_params = {
             version: '01',
-            key:  req.query.chave, //or any PIX key
+            key:  req.query.chave.replace( /[\.\-+\/\(\) ]/gm, ''), //or any PIX key
             name:  req.query.nome,
             city:  req.query.cidade,
             transactionId:  req.query.transacaoid, //max 25 characters
