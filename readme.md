@@ -1,6 +1,15 @@
+  <img src="https://raw.githubusercontent.com/filipedeschamps/rss-feed-emitter/master/content/logo.gif">
+
 # Rocket Gera PIX
 
 Criei uma API para simplicifcar o processo da geração do Código do PIX e, inclusive, gerar um QRCODE para pagamento.
+
+[![Versão mais recente](https://img.shields.io/github/release/tihhgoncalves/app_gerapix.svg?style=flat)]()  
+[![Último commit](https://img.shields.io/github/last-commit/tihhgoncalves/app_gerapix.svg?style=flat)]()  
+[![Downloads feitos até hoje](https://img.shields.io/github/downloads/tihhgoncalves/app_gerapix/total.svg?style=flat)]()  
+[![GitHub contributors](https://img.shields.io/github/contributors/tihhgoncalves/app_gerapix.svg?style=flat)]()  
+[![Lcença MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/)
+
 
 ## Como usar
 Para tornar o processo o mais simples possível, você gera tudo direto pela URL da API. 
@@ -52,8 +61,12 @@ A url base é: `https://rocket-gerapix.vercel.app` e a lista de parâmetros que 
 
  [https://rocket-gerapix.vercel.app?chave=tihhgoncalves@gmail.com&nome=Tihh%20Goncalves&cidade=SAO%20PAULO&transacaoid=****&mensagem=Pizza&valor=99.00](https://rocket-gerapix.vercel.app?chave=tihhgoncalves@gmail.com&nome=Tihh%20Goncalves&cidade=SAO%20PAULO&transacaoid=****&mensagem=Pizza&valor=99.00)
 
-_P.S.: O domínio `rocket.srv.br` é de propriedade da minha empresa, a [Rocket Produtora Digital](http://www.produtorarocket.com)._
-
 ## Autor
- - **@tihhgoncalves**
- - https://t.me/tihhgoncalves
+
+Este é um projeto de **Tihh Gonçalves**.
+
+
+
+[![Github](https://img.shields.io/badge/GitHub-181717.svg?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/tihhgoncalves)
+
+[![Telegram](https://img.shields.io/badge/Telegram-26A5E4.svg?style=for-the-badge&logo=Telegram&logoColor=white)](https://t.me/tihhgoncalves)
