@@ -52,8 +52,6 @@ A url base é: `https://rocket-gerapix.vercel.app` e a lista de parâmetros que 
 
  [https://rocket-gerapix.vercel.app?chave=tihhgoncalves@gmail.com&nome=Tihh%20Goncalves&cidade=SAO%20PAULO&transacaoid=****&mensagem=Pizza&valor=99.00](https://rocket-gerapix.vercel.app?chave=tihhgoncalves@gmail.com&nome=Tihh%20Goncalves&cidade=SAO%20PAULO&transacaoid=****&mensagem=Pizza&valor=99.00)
 
-_P.S.: O domínio `rocket.srv.br` é de propriedade da minha empresa, a [Rocket Produtora Digital](http://www.produtorarocket.com)._
-
 ## Autor
  - **@tihhgoncalves**
  - https://t.me/tihhgoncalves

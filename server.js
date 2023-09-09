@@ -1,95 +1,69 @@
-const express = require('express');
-const cors = require('cors');
+const express = require("express");
+const cors = require("cors");
 const app = express();
-const QrCodePix = require('qrcode-pix');
-
-/** Controle de rotas */
-app.get('/', async (req, res) => {
-
-    try{
-
-       if(Object.entries(req.query).length == 0){
-        res.status(400).send(JSON.stringify({ msg: 'Veja documentação para utilizar a API corretamente: https://github.com/tihhgoncalves/app_gerapix' }));
-            return;
-       }
-
-        // daz verificação de todos os campos foram enviados
-        if(!req.query.chave){
-            res.status(400).send(JSON.stringify({ msg: 'Faltou parâmetro {chave}.' }));
-            return;
-        }
-
-        if(!req.query.nome){
-            res.status(400).send(JSON.stringify({ msg: 'Faltou parâmetro {nome}.' }));
-            return;
-        }
-
-        if(!req.query.cidade){
-            res.status(400).send(JSON.stringify({ msg: 'Faltou parâmetro {cidade}.' }));
-            return;
-        }
-
-        if(!req.query.transacaoid){
-            res.status(400).send(JSON.stringify({ msg: 'Faltou parâmetro {transacaoid}.' }));
-            return;
-        }
-
-        if(!req.query.mensagem){
-            res.status(400).send(JSON.stringify({ msg: 'Faltou parâmetro {mensagem}.' }));
-            return;
-        }
-
-        if(!req.query.valor){
-            res.status(400).send(JSON.stringify({ msg: 'Faltou parâmetro {valor}.' }));
-            return;
-        }
-
-        // monta objeto final
-        let pix_params = {
-            version: '01',
-            key:  req.query.chave.replace( /[\.\-+\/\(\) ]/gm, ''), //or any PIX key
-            name:  req.query.nome,
-            city:  req.query.cidade,
-            transactionId:  req.query.transacaoid, //max 25 characters
-            message:  req.query.mensagem,
-            cep: null,
-            value: Number(req.query.valor),
-        };
-
-        //gera o PIX
-        const qrCodePix = QrCodePix.QrCodePix(pix_params);
-
-        // json de retorno
-        let json = {
-            copiaecola: qrCodePix.payload(),
-            qrcode: await qrCodePix.base64(),
-            qrcode_url: "https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=" + qrCodePix.payload()
-        }
-
-        if(!req.query.formato || req.query.formato == 1){
-            res.setHeader("Content-Type", 'application/json; charset=utf-8');
-            res.status(200).send(JSON.stringify(json));
-        
-        } else if(req.query.formato == 2) {
-            res.setHeader("Content-Type", 'text/plain; charset=utf-8');
-            res.status(200).send(json.copiaecola);
-
-        } else if(req.query.formato == 3) {
-            res.setHeader("Content-Type", 'text/plain; charset=utf-8');
-            res.status(200).send(json.qrcode);
-        } else if(req.query.formato == 4) {
-            res.setHeader("Content-Type", 'text/plain; charset=utf-8');
-            res.status(200).send(json.qrcode_url);
-        }
-
-
-    }
-    catch(e){
-        res.status(400).send(JSON.stringify({ msg: 'Ocorreu um erro.', erro: e.message }));
-    }
-
-})
+const QrCodePix = require("qrcode-pix");
 
 app.use(cors());
 app.use(express.json());
+
+const validatePixParams = (req, res, next) => {
+  const requiredFields = [
+    "chave",
+    "nome",
+    "cidade",
+    "transacaoid",
+    "mensagem",
+    "valor",
+  ];
+
+  for (let field of requiredFields) {
+    if (!req.query[field]) {
+      return res.status(400).json({ msg: `Faltou parâmetro {${field}}.` });
+    }
+  }
+
+  next();
+};
+
+app.get("/", validatePixParams, async (req, res) => {
+  try {
+    let pix_params = {
+      version: "01",
+      key: req.query.chave.replace(/[\.\-+\/\(\) ]/gm, ""),
+      name: req.query.nome,
+      city: req.query.cidade,
+      transactionId: req.query.transacaoid,
+      message: req.query.mensagem,
+      cep: null,
+      value: Number(req.query.valor),
+    };
+
+    const qrCodePix = QrCodePix.QrCodePix(pix_params);
+
+    let response = {
+      copiaecola: qrCodePix.payload(),
+      qrcode: await qrCodePix.base64(),
+      qrcode_url:
+        "https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=" +
+        qrCodePix.payload(),
+    };
+
+    switch (req.query.formato) {
+      case "2":
+        res.setHeader("Content-Type", "text/plain; charset=utf-8");
+        return res.send(response.copiaecola);
+      case "3":
+        res.setHeader("Content-Type", "text/plain; charset=utf-8");
+        return res.send(response.qrcode);
+      case "4":
+        res.setHeader("Content-Type", "text/plain; charset=utf-8");
+        return res.send(response.qrcode_url);
+      default:
+        return res.json(response);
+    }
+  } catch (e) {
+    res.status(400).json({ msg: "Ocorreu um erro.", erro: e.message });
+  }
+});
+
 app.listen(3333);
