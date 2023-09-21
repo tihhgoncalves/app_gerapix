@@ -27,9 +27,9 @@ const validatePixParams = (req, res, next) => {
 
 app.get("/", validatePixParams, async (req, res) => {
   try {
-    let pix_params = {
+        let pix_params = {
       version: "01",
-      key: req.query.chave.replace(/[\.\-+\/\(\) ]/gm, ""),
+      key: req.query.chave.replace(/[\-\/\(\) ]/gm, ""),
       name: req.query.nome,
       city: req.query.cidade,
       transactionId: req.query.transacaoid,
