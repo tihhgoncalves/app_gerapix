@@ -27,12 +27,12 @@ const validatePixParams = (req, res, next) => {
 
 app.get("/", validatePixParams, async (req, res) => {
   try {
-        let pix_params = {
+    let pix_params = {
       version: "01",
       key: req.query.chave.replace(/[\-\/\(\) ]/gm, ""),
-      name: req.query.nome,
-      city: req.query.cidade,
-      transactionId: req.query.transacaoid,
+      name: req.query.nome.substring(0, 25),
+      city: req.query.cidade.substring(0, 15),
+      transactionId: req.query.transacaoid.substring(0, 20),
       message: req.query.mensagem,
       cep: null,
       value: Number(req.query.valor),
@@ -45,7 +45,7 @@ app.get("/", validatePixParams, async (req, res) => {
       qrcode: await qrCodePix.base64(),
       qrcode_url:
         "https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=" +
-        qrCodePix.payload(),
+        qrCodePix.payload().replace('+55', '%2B55'),
     };
 
     switch (req.query.formato) {
